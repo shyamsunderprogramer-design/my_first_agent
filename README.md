@@ -1,133 +1,175 @@
-Agent Development Kit (ADK) — Python Setup & Usage Guide
+# 🚀 Python ADK (Agent Development Kit)
 
-This guide explains how to create and run AI agents using the Google Agent Development Kit (ADK) in Python.
-It includes environment setup, agent creation, configuration steps, and how to launch the optional web interface.
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python" />
+  <img src="https://img.shields.io/badge/Google-Gemini-green?logo=google" />
+  <img src="https://img.shields.io/badge/ADK-CLI-orange" />
+</p>
 
-📌 Requirements
+<p align="center">
+  <img width="800" src="https://capsule-render.vercel.app/api?type=rect&color=0:333,100:0d6efd&height=120&section=header&text=Build%20AI%20Agents%20with%20Gemini&fontColor=ffffff&fontSize=40" />
+</p>
 
-Python 3.10+
+A **modern, visually rich, GitHub‑ready README** to help you set up and use the **Python ADK** for building **Gemini-powered AI agents**.
 
-Pip
+---
 
-PowerShell (Windows) or Bash (Linux/Mac)
+## 🌟 Features
 
-Google API Key from Google AI Studio
-👉 https://aistudio.google.com/apikey
+* ⚡ **Quickstart-friendly**
+* 🎨 **Visual diagrams & icons**
+* 🤖 **Agent creation made simple**
+* 🌐 **Optional Web UI**
+* 📦 **Clean folder structure overview**
 
-🚀 1. Create a Virtual Environment
+---
 
-Run the following command:
+## 📌 Table of Contents
 
+* [Prerequisites](#-prerequisites)
+* [Create Virtual Environment](#-1-create--activate-virtual-environment)
+* [Install ADK](#-2-install-adk)
+* [Create Your First Agent](#-3-create-your-first-agent)
+* [Run Your Agent](#-5-run-your-agent)
+* [Web UI](#-6-optional-use-the-web-ui)
+* [Project Structure](#-7-visual-project-overview)
+* [Troubleshooting](#-troubleshooting)
+* [Learn More](#-learn-more)
+
+---
+
+## 🎯 Prerequisites
+
+<p align="center">
+
+| Requirement       | Version               |
+| ----------------- | --------------------- |
+| 🐍 Python         | **3.10+**             |
+| 🌐 Internet       | Required              |
+| 🔑 Google API Key | From Google AI Studio |
+
+👉 **Get API Key:** [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+
+</p>
+
+---
+
+## 📁 1. Create & Activate Virtual Environment
+
+### 🔨 Create environment
+
+```bash
 python -m venv <env_name>
+```
 
-🚀 2. Activate the Virtual Environment
-Windows (PowerShell)
-<env_name>\Scripts\activate
+### ⚡ Activate (Windows PowerShell)
 
-⚠️ If you get this error:
-<env_name>\Scripts\Activate.ps1 cannot be loaded because running scripts is disabled on this system.
+```bash
+<env_name>/Scripts/activate
+```
 
+### ⚠️ PowerShell Execution Policy Error?
 
-Fix it using:
-
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-
+```powershell
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+```
 
 Then activate again.
 
-🚀 3. Install the Agent Development Kit (ADK)
+---
+
+## 📦 2. Install ADK
+
+```bash
 pip install google-adk
+```
 
-🚀 4. Create a New Agent
+---
 
-You can create an agent using the ADK CLI or using Python directly.
+## 🤖 3. Create Your First Agent
 
-Option A — Using ADK CLI
+### Option A — ADK CLI
+
+```bash
 adk create my_agent
+```
 
-📟 5. Setup During Agent Creation
+### Option B — Python
 
-You'll be prompted:
+```bash
+python -m agents.create_agent <agent_name>
+```
 
+---
+
+## 🧭 4. Agent Creation Flow
+
+```
 Choose a model for the root agent:
 1. gemini-2.5-flash
-2. Other models (fill later)
+2. Other models
 Choose model (1, 2): 1
 
-1. Google AI Studio: https://aistudio.google.com/apikey
-
 Enter Google API key: <your_api_key>
+```
 
+🎉 **Your Agent Is Ready!**
 
-After completion, your agent folder will be created:
+---
 
-Agent created in D:\Rep\My_Agents\my_first_agent:
-- .env
-- __init__.py
-- agent.py
+## 🧠 5. Run Your Agent
 
-📁 6. Project Structure Explained
-my_agent/
-│
-├── agent.py        # Main agent logic
-├── .env            # Stores your API key & environment variables
-├── __init__.py     # Marks folder as a Python package
-
-.env Example:
-GOOGLE_API_KEY=your_api_key_here
-
-🧠 7. Running Your Agent
-
-After creation, you can run or extend your agent by editing agent.py.
-
-Typical usage inside your project:
-
+```python
 from my_agent.agent import agent
 
-response = agent.run("Hello!")
+response = agent.run("Hello agent!")
 print(response)
+```
 
+---
 
-Or run scripts you create inside the environment.
+## 🌐 6. (Optional) Use the Web UI
 
-🌐 8. (Optional) Launch the Web Interface
-
-To use the built-in ADK web UI:
-
+```bash
 adk web --port 8000
+```
 
+Open browser:
 
-Then open in the browser:
+### 👉 [http://localhost:8000](http://localhost:8000)
 
-http://localhost:8000
+---
 
-❓ Troubleshooting
-⚠️ PowerShell script execution disabled
+## 📚 7. Visual Project Overview
 
-Run:
+```
+📦 my_agent
+│
+├── 🧠 agent.py        → Your agent logic
+├── 🔐 .env             → Contains GOOGLE_API_KEY
+└── 📄 __init__.py      → Package marker
+```
 
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+---
 
-⚠️ Pip cannot find google-adk
+## ❓ Troubleshooting
 
-Make sure your virtual environment is activated.
+| Issue                           | Fix                                                        |
+| ------------------------------- | ---------------------------------------------------------- |
+| 🔴 Script blocked in PowerShell | Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force |
+| 🔴 API key not found            | Ensure .env contains GOOGLE_API_KEY=your_key               |
+| 🔴 Module not found             | Activate virtual environment                               |
+| 🔴 Cannot install google-adk    | pip install --upgrade pip                                  |
 
-⚠️ API Key errors
+---
 
-Ensure .env contains:
+## 📘 Learn More
 
-GOOGLE_API_KEY=your_key
+📖 Full docs & examples:
+👉 [https://google.github.io/adk-docs/#learn-more](https://google.github.io/adk-docs/#learn-more)
 
-📌 Additional Notes
+---
 
-ADK supports tools, memory, custom actions, and multi-agent workflows.
-
-You may add additional agents inside the same project.
-
-Use agent.run() to interact programmatically.
-
-
-📚 Learn More
-
-For additional documentation, examples, and advanced usage guides, visit the official ADK docs:
-👉 https://google.github.io/adk-docs/#learn-more
+<p align="center">
+  <img width="600" src="https://capsule-render.vercel.app/api?type=soft&color=0d6efd&text=Happy%20Building!&fontColor=fff&height=120" />
+</p>
