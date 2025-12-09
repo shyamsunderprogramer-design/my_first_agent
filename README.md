@@ -93,17 +93,6 @@ pip install google-adk
 ```bash
 adk create <agent_name>
 ```
-
-```bash
-adk create my_agent
-```
-
-### Option B — Python
-
-```bash
-python -m agents.create_agent <agent_name>
-```
-
 ## 🧭 4. Agent Creation Flow
 
 ```
