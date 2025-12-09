@@ -21,8 +21,9 @@ def home():
 
 @app.post("/run")
 def run_agent(request: PromptRequest):
-    response = root_agent.run(request.prompt)
-    return {"response": response}
+#    response = root_agent.run(request.prompt)
+#    return {"response": response}
+return {"response": f"Received prompt: {request.prompt}"}
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))  # Use Render's port if available
