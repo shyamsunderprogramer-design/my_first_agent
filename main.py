@@ -1,12 +1,14 @@
+import os
+import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
-from my_first_agent.agent import root_agent  # Use the existing instance
-import uvicorn
+from my_first_agent.agent import root_agent
 
-# Request model for the /run endpoint
+# Request model
 class PromptRequest(BaseModel):
     prompt: str
 
+# FastAPI app
 app = FastAPI(
     title="My First AI Agent API",
     description="A FastAPI wrapper around Google Gemini ADK Agent",
@@ -19,8 +21,9 @@ def home():
 
 @app.post("/run")
 def run_agent(request: PromptRequest):
-    response = root_agent.run(request.prompt)  # Use root_agent
+    response = root_agent.run(request.prompt)
     return {"response": response}
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 8000))  # Use Render's port if available
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
