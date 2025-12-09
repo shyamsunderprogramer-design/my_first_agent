@@ -91,13 +91,7 @@ pip install google-adk
 ### Option A — ADK CLI
 
 ```bash
-adk create my_agent
-```
-
-### Option B — Python
-
-```bash
-python -m agents.create_agent <agent_name>
+adk create <agent_name>
 ```
 
 ---
@@ -120,13 +114,9 @@ Enter Google API key: <your_api_key>
 ## 🧠 5. Run Your Agent
 
 ```python
-from my_agent.agent import agent
-
-response = agent.run("Hello agent!")
-print(response)
+adk run <agent_name>
 ```
 
----
 
 ## 🌐 6. (Optional) Use the Web UI
 
