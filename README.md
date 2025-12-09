@@ -89,15 +89,10 @@ pip install google-adk
 ## 🤖 3. Create Your First Agent
 
 ### Option A — ADK CLI
-<<<<<<< HEAD
 
 ```bash
 adk create <agent_name>
 ```
-
----
-
-=======
 
 ```bash
 adk create my_agent
